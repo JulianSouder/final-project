@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 #include "sphere.h"
 #include "hitablelist.h"
 #include "float.h"
@@ -33,9 +34,9 @@ int main() {
         for (int i = 0; i < nx; i++) {
             vec3 col(0, 0, 0);
             for (int s=0; s < ns; s++) {
-                float u = float(i) / float(nx);
-                float v = float(j) / float(ny);
-                ray r(origin, lower_left_corner + u*horizontal + v*vertical);
+                float u = float(i + drand48()) / float(nx);
+                float v = float(j + drand48()) / float(ny);
+                ray r = cam.get_ray(u, v);
                 vec3 p = r.point_at_parameter(2.0);
                 col += color(r, world);
             }
