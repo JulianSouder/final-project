@@ -96,7 +96,6 @@ class dielectric : public material {
             else {
                 scattered = ray(rec.p, reflected);
                 reflect_prob = 1.0;
-                return false;
             }
             if (drand48() < reflect_prob) {
                 scattered = ray(rec.p, reflected);
